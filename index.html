@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LumiCaps - Tastatur Konfigurator</title>
+    <style>
+        :root {
+            --primary: #7e6cca;
+            --secondary: #ff9e44;
+            --dark: #2a2438;
+            --light: #f5f5f5;
+            --success: #5cb85c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            gap: 2rem;
+        }
+        
+        .configurator {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .preview {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .option {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: var(--primary);
+        }
+        
+        .option.selected {
+            border-color: var(--primary);
+            background-color: rgba(126, 108, 202, 0.1);
+        }
+        
+        .keyboard-preview {
+            width: 100%;
+            height: 200px;
+            background-color: #352f44;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .key {
+            position: absolute;
+            background-color: #dbd8e3;
+            border-radius: 4px;
+        }
+        
+        .keyboard-base {
+            position: absolute;
+            bottom: 0;
+            width: 90%;
+            height: 20px;
+            background-color: #5c5470;
+            border-radius: 5px 5px 0 0;
+            left: 5%;
+        }
+        
+        .summary {
+            width: 100%;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #eee;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .btn-add:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">LumiCaps</div>
+        <div class="tagline">Dein individuelles Tastatur-Erlebnis</div>
+    </header>
+    
+    <div class="container">
+        <div class="configurator">
+            <h2>Tastatur konfigurieren</h2>
+            
+            <div class="option-group">
+                <div class="option-title">Switches</div>
+                <div class="options">
+                    <div class="option selected" data-type="switch" data-value="red" data-price="25">Cherry MX Red</div>
+                    <div class="option" data-type="switch" data-value="blue" data-price="27">Cherry MX Blue</div>
+                    <div class="option" data-type="switch" data-value="brown" data-price="26">Cherry MX Brown</div>
+                    <div class="option" data-type="switch" data-value="silent" data-price="30">Silent Red</div>
+                </div>
+            </div>
+            
+            <div class="option-group">
+                <div class="option-title">Keycaps</div>
+                <div class="options">
+                    <div class="option selected" data-type="keycap" data-value="black" data-price="35">Schwarz (ABS)</div>
+                    <div class="option" data-type="keycap" data-value="white" data-price="35">Weiß (ABS)</div>
+                    <div class="option" data-type="keycap" data-value="pbt" data-price="45">Beige (PBT)</div>
+                    <div class="option" data-type="keycap" data-value="rgb" data-price="60">RGB durchscheinend</div>
+                </div>
+            </div>
+            
+            <div class="option-group">
+                <div class="option-title">Seitenband</div>
+                <div class="options">
+                    <div class="option selected" data-type="band" data-value="black" data-price="10">Schwarz</div>
+                    <div class="option" data-type="band" data-value="transparent" data-price="12">Transparent</div>
+                    <div class="option" data-type="band" data-value="colored" data-price="15">Bunt</div>
+                    <div class="option" data-type="band" data-value="glow" data-price="20">Glow in the Dark</div>
+                </div>
+            </div>
+            
+            <div class="option-group">
+                <div class="option-title">Zubehör</div>
+                <div class="options">
+                    <div class="option" data-type="extra" data-value="none" data-price="0">Keins</div>
+                    <div class="option" data-type="extra" data-value="puller" data-price="8">Keycap Puller</div>
+                    <div class="option" data-type="extra" data-value="brush" data-price="5">Reinigungsbürste</div>
+                    <div class="option" data-type="extra" data-value="both" data-price="12">Beides</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="preview">
+            <h2>Deine Konfiguration</h2>
+            
+            <div class="keyboard-preview">
+                <div class="keyboard-base"></div>
+                <!-- Keys will be generated by JavaScript -->
+            </div>
+            
+            <div class="summary">
+                <div class="summary-item">
+                    <span>Switches</span>
+                    <span class="price" id="switch-price">25,00 €</span>
+                </div>
+                <div class="summary-item">
+                    <span>Keycaps</span>
+                    <span class="price" id="keycap-price">35,00 €</span>
+                </div>
+                <div class="summary-item">
+                    <span>Seitenband</span>
+                    <span class="price" id="band-price">10,00 €</span>
+                </div>
+                <div class="summary-item">
+                    <span>Zubehör</span>
+                    <span class="price" id="extra-price">0,00 €</span>
+                </div>
+                
+                <div class="total">
+                    <span>Gesamtpreis</span>
+                    <span class="price" id="total-price">70,00 €</span>
+                </div>
+            </div>
+            
+            <button class="btn-add">Zur Wunschliste hinzufügen</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 LumiCaps - Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial configuration with default selections
+            const config = {
+                switch: { name: 'Cherry MX Red', price: 25 },
+                keycap: { name: 'Schwarz (ABS)', price: 35 },
+                band: { name: 'Schwarz', price: 10 },
+                extra: { name: 'Keins', price: 0 }
+            };
+            
+            // Draw initial keyboard preview
+            drawKeyboard();
+            
+            // Add event listeners to all options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    const value = this.dataset.value;
+                    const price = parseFloat(this.dataset.price);
+                    const name = this.textContent;
+                    
+                    // Update configuration
+                    config[type] = { name, price };
+                    
+                    // Update UI
+                    updateSelection(this, type);
+                    updatePrices();
+                });
+            });
+            
+            // Update selected option UI
+            function updateSelection(selectedOption, type) {
+                // Remove selected class from all options of this type
+                document.querySelectorAll(`.option[data-type="${type}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                selectedOption.classList.add('selected');
+            }
+            
+            // Update all prices in the summary
+            function updatePrices() {
+                document.getElementById('switch-price').textContent = config.switch.price.toFixed(2) + ' €';
+                document.getElementById('keycap-price').textContent = config.keycap.price.toFixed(2) + ' €';
+                document.getElementById('band-price').textContent = config.band.price.toFixed(2) + ' €';
+                document.getElementById('extra-price').textContent = config.extra.price.toFixed(2) + ' €';
+                
+                // Calculate total
+                const total = config.switch.price + config.keycap.price + config.band.price + config.extra.price;
+                document.getElementById('total-price').textContent = total.toFixed(2) + ' €';
+            }
+            
+            // Draw keyboard preview
+            function drawKeyboard() {
+                const keyboard = document.querySelector('.keyboard-preview');
+                // Clear existing keys
+                const existingKeys = document.querySelectorAll('.key');
+                existingKeys.forEach(key => key.remove());
+                
+                // Draw keyboard rows
+                const row1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];
+                const row2 = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'];
+                const row3 = ['Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+                
+                drawKeyRow(keyboard, row1, 30);
+                drawKeyRow(keyboard, row2, 70);
+                drawKeyRow(keyboard, row3, 110);
+                
+                // Draw space bar
+                const spaceBar = document.createElement('div');
+                spaceBar.className = 'key';
+                spaceBar.style.width = '120px';
+                spaceBar.style.height = '20px';
+                spaceBar.style.left = 'calc(50% - 60px)';
+                spaceBar.style.bottom = '50px';
+                keyboard.appendChild(spaceBar);
+            }
+            
+            function drawKeyRow(container, keys, top) {
+                const keyWidth = 25;
+                const keyHeight = 20;
+                const keyGap = 5;
+                const totalWidth = (keys.length * keyWidth) + ((keys.length - 1) * keyGap);
+                const startLeft = (container.offsetWidth - totalWidth) / 2;
+                
+                keys.forEach((key, index) => {
+                    const keyElement = document.createElement('div');
+                    keyElement.className = 'key';
+                    keyElement.style.width = keyWidth + 'px';
+                    keyElement.style.height = keyHeight + 'px';
+                    keyElement.style.left = startLeft + (index * (keyWidth + keyGap)) + 'px';
+                    keyElement.style.top = top + 'px';
+                    container.appendChild(keyElement);
+                });
+            }
+            
+            // Add to wishlist button
+            document.querySelector('.btn-add').addEventListener('click', function() {
+                alert('Deine Tastatur-Konfiguration wurde zur Wunschliste hinzugefügt!');
+            });
+        });
+    </script>
+</body>
+</html>
