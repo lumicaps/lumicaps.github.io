@@ -164,7 +164,7 @@
             color: var(--primary);
         }
         
-        .btn-add {
+        .btn-order {
             background: linear-gradient(135deg, var(--primary), var(--dark));
             color: white;
             border: none;
@@ -177,7 +177,7 @@
             transition: all 0.3s;
         }
         
-        .btn-add:hover {
+        .btn-order:hover {
             opacity: 0.9;
             transform: translateY(-2px);
         }
@@ -195,6 +195,70 @@
             color: white;
         }
         
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
+        .btn-close {
+            background: #ddd;
+            color: #333;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -210,45 +274,45 @@
     
     <div class="container">
         <div class="configurator">
-            <h2>Keyboard-Maker</h2>
-            <p>We are using the Newmen GM610</p>
-            <p>If you want another please tell this in your order email</p>
+            <h2>Tastatur konfigurieren</h2>
+            
             <div class="option-group">
                 <div class="option-title">Switches</div>
                 <div class="options">
-                    <div class="option selected" data-type="switch" data-value="red" data-price="25">Akko V3 pro LED variant</div>
-                    <div class="option" data-type="switch" data-value="blue" data-price="50">Akko AstroLink magnet switch</div>
-                    <div class="option" data-type="switch" data-value="brown" data-price="26">Gateron Milky Yellow Pro</div>
-                    <div class="option" data-type="switch" data-value="silent" data-price="40">Gateron Ölkönig 3.0</div>
+                    <div class="option selected" data-type="switch" data-value="red" data-price="25">Cherry MX Red</div>
+                    <div class="option" data-type="switch" data-value="blue" data-price="27">Cherry MX Blue</div>
+                    <div class="option" data-type="switch" data-value="brown" data-price="26">Cherry MX Brown</div>
+                    <div class="option" data-type="switch" data-value="silent" data-price="30">Silent Red</div>
                 </div>
             </div>
             
             <div class="option-group">
                 <div class="option-title">Keycaps</div>
                 <div class="options">
-                    <div class="option selected" data-type="keycap" data-value="black" data-price="30">Mintcaps doubleshoot white to violet sideprint rgb</div>
-                    <div class="option" data-type="keycap" data-value="white" data-price="0">Classic</div>
-                    <div class="option" data-type="keycap" data-value="pbt" data-price="47">Yunzii mog dye sub yellow/pink</div>
-                    <div class="option" data-type="keycap" data-value="rgb" data-price="60">LQXQ Low-Profile black shine through</div>
+                    <div class="option selected" data-type="keycap" data-value="black" data-price="35">Schwarz (ABS)</div>
+                    <div class="option" data-type="keycap" data-value="white" data-price="35">Weiß (ABS)</div>
+                    <div class="option" data-type="keycap" data-value="pbt" data-price="45">Beige (PBT)</div>
+                    <div class="option" data-type="keycap" data-value="rgb" data-price="60">RGB durchscheinend</div>
                 </div>
             </div>
             
             <div class="option-group">
                 <div class="option-title">Seitenband</div>
                 <div class="options">
-                    <div class="option selected" data-type="band" data-value="black" data-price="10">Avejjbaey Ribbon Keyboards Stribe white</div>
-                    <div class="option" data-type="band" data-value="transparent" data-price="10">Avejjbaey Ribbon Keyboards Stribe black</div>
-                                                                                                                                             
+                    <div class="option selected" data-type="band" data-value="black" data-price="10">Schwarz</div>
+                    <div class="option" data-type="band" data-value="transparent" data-price="12">Transparent</div>
+                    <div class="option" data-type="band" data-value="colored" data-price="15">Bunt</div>
+                    <div class="option" data-type="band" data-value="glow" data-price="20">Glow in the Dark</div>
                 </div>
             </div>
             
             <div class="option-group">
                 <div class="option-title">Zubehör</div>
                 <div class="options">
-                    <div class="option" data-type="extra" data-value="none" data-price="0">Keins</div>
+                    <div class="option selected" data-type="extra" data-value="none" data-price="0">Keins</div>
                     <div class="option" data-type="extra" data-value="puller" data-price="8">Keycap Puller</div>
-                    <div class="option" data-type="extra" data-value="brush" data-price="15">OXO Good Grips</div>
-                    <div class="option" data-type="extra" data-value="both" data-price="23">Beides</div>
+                    <div class="option" data-type="extra" data-value="brush" data-price="5">Reinigungsbürste</div>
+                    <div class="option" data-type="extra" data-value="both" data-price="12">Beides</div>
                 </div>
             </div>
         </div>
@@ -285,7 +349,37 @@
                 </div>
             </div>
             
-            <button class="btn-add">Zur Wunschliste hinzufügen</button>
+            <button class="btn-order" id="order-btn">Jetzt bestellen</button>
+        </div>
+    </div>
+    
+    <!-- Modal für Bestellinformationen -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <h2>Bestellung aufgeben</h2>
+            <p>Bitte gib deine Kontaktdaten ein, um die Bestellung abzuschließen.</p>
+            
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Adresse</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone">
+                </div>
+                
+                <button type="submit" class="btn-submit">Bestellung abschicken</button>
+                <button type="button" class="btn-close" id="close-modal">Abbrechen</button>
+            </form>
         </div>
     </div>
     
@@ -390,9 +484,67 @@
                 });
             }
             
-            // Add to wishlist button
-            document.querySelector('.btn-add').addEventListener('click', function() {
-                alert('Deine Tastatur-Konfiguration wurde zur Wunschliste hinzugefügt!');
+            // Order button functionality
+            document.getElementById('order-btn').addEventListener('click', function() {
+                document.getElementById('order-modal').style.display = 'flex';
+            });
+            
+            // Close modal button
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('order-modal').style.display = 'none';
+            });
+            
+            // Order form submission
+            document.getElementById('order-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const phone = document.getElementById('phone').value;
+                
+                // Calculate total
+                const total = config.switch.price + config.keycap.price + config.band.price + config.extra.price;
+                
+                // Create email content
+                const subject = 'Neue Tastatur-Bestellung von ' + name;
+                const body = `
+Neue Bestellung von LumiCaps:
+
+Kundeninformation:
+- Name: ${name}
+- E-Mail: ${email}
+- Adresse: ${address}
+- Telefon: ${phone}
+
+Bestellte Konfiguration:
+- Switches: ${config.switch.name} (${config.switch.price.toFixed(2)} €)
+- Keycaps: ${config.keycap.name} (${config.keycap.price.toFixed(2)} €)
+- Seitenband: ${config.band.name} (${config.band.price.toFixed(2)} €)
+- Zubehör: ${config.extra.name} (${config.extra.price.toFixed(2)} €)
+
+Gesamtpreis: ${total.toFixed(2)} €
+
+Diese Bestellung wurde über den LumiCaps Konfigurator aufgegeben.
+                `;
+                
+                // Encode for mailto link
+                const encodedSubject = encodeURIComponent(subject);
+                const encodedBody = encodeURIComponent(body);
+                
+                // Create mailto link
+                const mailtoLink = `mailto:lumicaps.de@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show confirmation and close modal
+                alert('Vielen Dank für Ihre Bestellung! Ihr E-Mail-Client wird geöffnet, um die Bestellung abzuschließen.');
+                document.getElementById('order-modal').style.display = 'none';
+                
+                // Reset form
+                document.getElementById('order-form').reset();
             });
         });
     </script>
