@@ -317,7 +317,7 @@
         </div>
         
         <div class="preview">
-            <h2>Deine Konfiguration</h2>
+            <h2>Your config</h2>
             
             <div class="keyboard-preview">
                 <div class="keyboard-base"></div>
@@ -511,7 +511,7 @@
                 const body = `
  Order for LumiCaps:
 
-Kundeninformation:
+Information:
 - Name: ${name}
 - E-Mail: ${email}
 - Adress: ${address}
@@ -526,13 +526,16 @@ Config:
 Total: ${total.toFixed(2)} €
 
 This order is a part of LumiCaps.
-Terms: 
+Terms:
+
 1. The seller has any rights to stop working on your order if you are not agreeing with this terms
 2. The seller can request money from fake orders
 3. By ordering you are able to pay your order
+4. The seller has any rights, showing the production of your order or the whole order (Which not includes personal information)
 
+I, ${name} am agreeing with the terms by sending this and typing my paypal above and the color of the base black/white.
 Paypal: 
-I, ${name} am agreeing with the terms by sending this and typing my paypal above.
+Base-Color: 
 
                 `;
                 
