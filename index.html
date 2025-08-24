@@ -355,8 +355,8 @@
     <!-- Modal für Bestellinformationen -->
     <div class="modal" id="order-modal">
         <div class="modal-content">
-            <h2>Bestellung aufgeben</h2>
-            <p>Bitte gib deine Kontaktdaten ein, um die Bestellung abzuschließen.</p>
+            <h2>Step 2</h2>
+            <p>Please enter here your informations.</p>
             
             <form id="order-form">
                 <div class="form-group">
@@ -368,22 +368,22 @@
                     <input type="email" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="address">Adresse</label>
+                    <label for="address">Adress</label>
                     <input type="text" id="address" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Telefon</label>
+                    <label for="phone">Telephone</label>
                     <input type="tel" id="phone">
                 </div>
                 
-                <button type="submit" class="btn-submit">Bestellung abschicken</button>
-                <button type="button" class="btn-close" id="close-modal">Abbrechen</button>
+                <button type="submit" class="btn-submit">Order</button>
+                <button type="button" class="btn-close" id="close-modal">Cancel</button>
             </form>
         </div>
     </div>
     
     <footer>
-        <p>© 2023 LumiCaps - Alle Rechte vorbehalten</p>
+        <p>© 2025 LumiCaps - Alle Rechte vorbehalten</p>
     </footer>
 
     <script>
@@ -509,23 +509,23 @@
                 // Create email content
                 const subject = 'Neue Tastatur-Bestellung von ' + name;
                 const body = `
-Neue Bestellung von LumiCaps:
+ Order for LumiCaps:
 
 Kundeninformation:
 - Name: ${name}
 - E-Mail: ${email}
-- Adresse: ${address}
-- Telefon: ${phone}
+- Adress: ${address}
+- Telephone: ${phone}
 
-Bestellte Konfiguration:
+Config:
 - Switches: ${config.switch.name} (${config.switch.price.toFixed(2)} €)
 - Keycaps: ${config.keycap.name} (${config.keycap.price.toFixed(2)} €)
-- Seitenband: ${config.band.name} (${config.band.price.toFixed(2)} €)
-- Zubehör: ${config.extra.name} (${config.extra.price.toFixed(2)} €)
+- Sidestrib: ${config.band.name} (${config.band.price.toFixed(2)} €)
+- Addons: ${config.extra.name} (${config.extra.price.toFixed(2)} €)
 
-Gesamtpreis: ${total.toFixed(2)} €
+Total: ${total.toFixed(2)} €
 
-Diese Bestellung wurde über den LumiCaps Konfigurator aufgegeben.
+This order is a part of LumiCaps.
                 `;
                 
                 // Encode for mailto link
@@ -539,7 +539,7 @@ Diese Bestellung wurde über den LumiCaps Konfigurator aufgegeben.
                 window.location.href = mailtoLink;
                 
                 // Show confirmation and close modal
-                alert('Vielen Dank für Ihre Bestellung! Ihr E-Mail-Client wird geöffnet, um die Bestellung abzuschließen.');
+                alert('Please enter also your paypal in the email downbelow and pay to lumicaps.de@gmail.com.');
                 document.getElementById('order-modal').style.display = 'none';
                 
                 // Reset form
